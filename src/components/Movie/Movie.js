@@ -1,10 +1,11 @@
 import React from 'react';
 import './Movie.css'
+import { Link } from 'react-router-dom';
 
 const Movie = (props) => {
     let movie = props.movie;
     return (
-        <div className='movieCard'>
+        <Link to='/detailed' className='movieCard'>
             <img className='img-responsive' src={movie.poster} alt='Spider-Man Far From Home' />
             <div>
                 <h2 className='title'>{movie.title}</h2>
@@ -12,11 +13,11 @@ const Movie = (props) => {
                 <p className='text'>{movie.description}</p>
 
                 <div className='btn-ctnr'>
-                    <a className='modify'>Modifier</a>
-                    <a className='delete'>Supprimer</a>
+                    <Link to='/modify' className='modify'>Modifier</Link>
+                    <Link to='/delete' className='delete'>Supprimer</Link>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
