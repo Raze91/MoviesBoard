@@ -1,0 +1,60 @@
+html {
+    height: 100%;
+}
+.movieCard {
+    display: flex;
+    background-color: gainsboro;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.movieCard .text {
+    max-width: 80%;
+    margin: auto;
+}
+
+.movieCard .img-responsive {
+    max-width: 20%;
+}
+.movieCard .btn-ctnr {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.movieCard .modify {
+    background-color: cadetblue;
+    color: white;
+    width: 80px;
+    height: 25px;
+    margin-right: 20px;
+    border-radius: 30px;
+}
+
+.movieCard .delete {
+    background-color: brown;
+    color: white;
+    width: 90px;
+    border-radius: 30px;
+}
+
+@media screen and (max-width: 760px) {
+
+    .movieCard {
+        flex-direction: column;
+    }
+
+    .movieCard .text {
+        text-align: justify;
+        max-width: 90%;
+        margin: auto;
+    }
+
+    .movieCard .img-responsive {
+        max-width: 100%;
+        margin: auto;
+    }
+}
