@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Movies from './components/Movies/Movies.js'
 import DetailedMovie from './components/DetailedMovie/DetailedMovie.js'
+import MovieFilter from './components/MovieFilter/MovieFilter.js'
 
 const axios = require('axios');
 
@@ -27,6 +28,7 @@ function App() {
     <Router>
       <main className="App">
         <Route exact path="/">
+          < MovieFilter />
           < Movies movies={movies} />
         </Route>
         <Route exact path='/detailed'>
