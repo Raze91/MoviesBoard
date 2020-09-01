@@ -26,8 +26,8 @@ const MovieSearch = () => {
         e.preventDefault()
         axios.get(`${url}api_key=${API_Key}&query=${title}&primary_release_year=${date}`)
         .then((result) => {
-            console.log(result)
-            setSearchResultList(result);
+            console.log(result.data.results)
+            setSearchResultList(result.data.results);
         })
         .catch((error) => {
             console.log(error)
