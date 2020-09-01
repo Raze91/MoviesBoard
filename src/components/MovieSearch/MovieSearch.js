@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './MovieSearch.css';
 import axios from 'axios'
 import SearchResultList from '../SearchResultList/SearchResultList.js'
+import AddMovie from '../AddMovie/AddMovie';
 
 const MovieSearch = () => {
 
@@ -17,8 +18,7 @@ const MovieSearch = () => {
     const [clickedButton, setClickedButton] = useState(false);
 
     const onClickedButton = () => {
-        // setClickedButton(true);
-        console.log('clicked')
+        setClickedButton(true);
     }
 
     const onTitleChange = (e) => {
@@ -41,15 +41,15 @@ const MovieSearch = () => {
             })
     }
 
-    const onAdd = (e) => {
+    const onAdd = (e, resultMovie) => {
         e.preventDefault();
-        // console.log(selectedChildMovie)
         onClickedButton();
+        console.log(resultMovie)
     }
 
     return (
         <article>
-            {!clickedButton &&
+            {!clickedButton ?
                 <div>
                     <form onSubmit={(e) => { onSearch(e) }}>
 
@@ -65,8 +65,8 @@ const MovieSearch = () => {
                         <input type='submit' value='Rechercher'></input>
                     </form>
                     < SearchResultList searchResultList={searchResultList} selectedChildMovie={selectedChildMovie} onClickedButton={onClickedButton} onAdd={onAdd}/>
-                </div>
-            }
+                </div> : < AddMovie />
+                }
         </article>
     )
 }
