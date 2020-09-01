@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SearchResult.css'
-import { Link } from 'react-router-dom';
-
 
 const SearchResult = (props) => {
     let resultMovie = props.movie;
 
+    const Click = (e) => {
+        props.onAdd(e);
+        props.selectedChildMovie = resultMovie;
+    }
+
     return (
-        <section className='movieCard'>
-            <img className='img-responsive' src={`http://image.tmdb.org/t/p/w185${resultMovie.poster_path}`} alt='Film correspondant à la recherche' />
+        <div className='movieCardSearch'>
+            <img className='img-responsiveSearch' src={`http://image.tmdb.org/t/p/w185${resultMovie.poster_path}`} alt='Film correspondant à la recherche' />
             <div className='text-ctnr'>
                 <h2 className='title'>{resultMovie.title}</h2>
                 <p className='date'>{resultMovie.release_date}</p>
 
                 <div className='btn-ctnr'>
-                    <Link to='/add' className='add'>Ajouter</Link>
+                    <button onClick={(e) => { Click(e) }}>Ajouter</button>
                 </div>
             </div>
-        </section>
+        </div>
     )
 }
 

@@ -5,14 +5,21 @@ import SearchResultList from '../SearchResultList/SearchResultList.js'
 
 const MovieSearch = () => {
 
+    let selectedChildMovie;
     const url = "https://api.themoviedb.org/3/search/movie?";
     const API_Key = '4352608bd1a7a23bfe98f97c35c7468e';
 
 
     const [title, setTitle] = useState();
     const [date, setDate] = useState();
-
     const [searchResultList, setSearchResultList] = useState([]);
+    const [selectedMovie, setSelectedMovie] = useState()
+    const [clickedButton, setClickedButton] = useState(false);
+
+    const onClickedButton = () => {
+        // setClickedButton(true);
+        console.log('clicked')
+    }
 
     const onTitleChange = (e) => {
         setTitle(e.target.value);
@@ -25,32 +32,42 @@ const MovieSearch = () => {
     const onSearch = (e) => {
         e.preventDefault()
         axios.get(`${url}api_key=${API_Key}&query=${title}&primary_release_year=${date}`)
-        .then((result) => {
-            console.log(result.data.results)
-            setSearchResultList(result.data.results);
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+            .then((result) => {
+                console.log(result.data.results)
+                setSearchResultList(result.data.results);
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    const onAdd = (e) => {
+        e.preventDefault();
+        // console.log(selectedChildMovie)
+        onClickedButton();
     }
 
     return (
-        <form onSubmit={(e) => {onSearch(e)}}>
+        <article>
+            {!clickedButton &&
+                <div>
+                    <form onSubmit={(e) => { onSearch(e) }}>
 
-            <legend>Rechercher les films</legend>
+                        <legend>Rechercher les films</legend>
+
+                        <label>Titre : </label>
+                        <input type='text' onChange={(e) => { onTitleChange(e) }} ></input>
+
+                        <label>Date de sortie : </label>
+                        <input type='date' onChange={(e) => { onDateChange(e) }}></input>
 
 
-            <label>Titre : </label>
-            <input type='text' onChange={(e) => { onTitleChange(e) }} ></input>
-
-            <label>Date de sortie : </label>
-            <input type='date' onChange={(e) => { onDateChange(e) }}></input>
-
-
-            <input type='submit' value='Rechercher'></input>
-
-            < SearchResultList searchResultList={searchResultList}/>
-        </form>
+                        <input type='submit' value='Rechercher'></input>
+                    </form>
+                    < SearchResultList searchResultList={searchResultList} selectedChildMovie={selectedChildMovie} onClickedButton={onClickedButton} onAdd={onAdd}/>
+                </div>
+            }
+        </article>
     )
 }
 

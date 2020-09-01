@@ -7,6 +7,7 @@ import Movies from './components/Movies/Movies.js'
 import DetailedMovie from './components/DetailedMovie/DetailedMovie.js'
 import MovieFilter from './components/MovieFilter/MovieFilter.js'
 import MovieSearch from './components/MovieSearch/MovieSearch.js'
+import AddMovie from './components/AddMovie/AddMovie.js'
 
 // const axios = require('axios');
 
@@ -40,8 +41,12 @@ function App() {
         <Route exact path='/MovieSearch'>
           < MovieSearch />
         </Route>
+        <Route exact path='/AddMovie'>
+          < AddMovie />
+        </Route>
       </main>
     </Router>
+
   );
 }
 
