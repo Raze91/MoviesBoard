@@ -19,6 +19,8 @@ const MovieFilter = () => {
 
                 <label>Catégorie : </label>
                 <input type='text'></input>
+
+                <input type='submit' value='Filtrer'></input>
             </form>
         </section>
     )

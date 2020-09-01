@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 const Movie = (props) => {
     let movie = props.movie;
     return (
-        <Link to='/detailed' className='movieCard'>
-            <img className='img-responsive' src={movie.poster} alt='Spider-Man Far From Home' />
-            <div>
+        <section className='movieCard'>
+            <Link to='/detailed'>
+                <img className='img-responsive' src={movie.poster} alt='Spider-Man Far From Home' />
+            </Link>
+            <div className='text-ctnr'>
                 <h2 className='title'>{movie.title}</h2>
                 <p className='date'>{movie.release_date}</p>
                 <p className='text'>{movie.description}</p>
@@ -17,7 +19,7 @@ const Movie = (props) => {
                     <Link to='/delete' className='delete'>Supprimer</Link>
                 </div>
             </div>
-        </Link>
+        </section>
     )
 }
 
