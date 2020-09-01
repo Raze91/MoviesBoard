@@ -1,0 +1,10 @@
+.searchForm legend {
+    margin: 10px 0;
+}
+
+.searchForm label:nth-of-type(2),
+.searchForm input[type=submit] {
+    margin-left: 10px;
+}
+
+

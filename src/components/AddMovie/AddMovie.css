@@ -1,0 +1,21 @@
+.addForm {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+
+.addForm label:not(label:nth-of-type(1)) {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.addForm input[type=submit] {
+    width: 30%;
+    margin: 10px auto;
+}
+
+.addForm textarea {
+    height: 130px;
+}
+

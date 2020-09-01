@@ -44,6 +44,7 @@ const MovieSearch = () => {
     const onAdd = (e, resultMovie) => {
         e.preventDefault();
         onClickedButton();
+        setSelectedMovie(resultMovie)
         console.log(resultMovie)
     }
 
@@ -51,7 +52,7 @@ const MovieSearch = () => {
         <article>
             {!clickedButton ?
                 <div>
-                    <form onSubmit={(e) => { onSearch(e) }}>
+                    <form className="searchForm" onSubmit={(e) => { onSearch(e) }}>
 
                         <legend>Rechercher les films</legend>
 
@@ -65,7 +66,7 @@ const MovieSearch = () => {
                         <input type='submit' value='Rechercher'></input>
                     </form>
                     < SearchResultList searchResultList={searchResultList} selectedChildMovie={selectedChildMovie} onClickedButton={onClickedButton} onAdd={onAdd}/>
-                </div> : < AddMovie />
+                </div> : < AddMovie selectedMovie={selectedMovie}/>
                 }
         </article>
     )

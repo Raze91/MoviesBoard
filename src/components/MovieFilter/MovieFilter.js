@@ -7,7 +7,7 @@ const MovieFilter = () => {
     return (
         <section>
 
-            <form>
+            <form className="filterForm">
                 <legend>Filtrer les films</legend>
 
             
