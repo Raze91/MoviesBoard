@@ -1,4 +1,4 @@
-.actorCtnr {
+.similarCtnr {
     display: flex;
     flex-wrap: wrap;
     width: 50%;
@@ -6,17 +6,17 @@
     justify-content: space-around;
 }
 
-.actorCtnr img {
+.similarCtnr img {
     width: 100%;
     margin-top: 10px;
 }
 
-.actor {
+.similar {
     width: 15%;
     min-width: 205px;
 }
 
-.actor div h3, 
-.actor div h4 {
+.similar div h3, 
+.similar div h4 {
     margin: 5px auto;
 }
