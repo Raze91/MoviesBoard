@@ -16,6 +16,7 @@ function App() {
 
   const [movies, setMovies] = useState([]);
 
+
   useEffect(() => {
     axios.get('http://localhost:3000/movies')
       .then((result) => {
@@ -33,10 +34,10 @@ function App() {
         <Route exact path="/">
           < MovieFilter />
           < Movies movies={movies} />
-          <Link to='/MovieSearch'>Ajouter plus de films</Link>
+          <Link className="toMovieSearch" to='/MovieSearch'>Ajouter plus de films</Link>
         </Route>
-        <Route exact path='/detailed'>
-          < DetailedMovie />
+        <Route exact path='/detailed/:id'>
+          < DetailedMovie movies={movies}/>
         </Route>
         <Route exact path='/MovieSearch'>
           < MovieSearch />

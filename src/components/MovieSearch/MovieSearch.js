@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './MovieSearch.css';
 import axios from 'axios'
-import SearchResultList from '../SearchResultList/SearchResultList.js'
+import SearchResultList from './SearchResultList/SearchResultList.js'
 import AddMovie from '../AddMovie/AddMovie';
 
-const MovieSearch = () => {
+const MovieSearch = (props) => {
 
-    let selectedChildMovie;
+     
     const url = "https://api.themoviedb.org/3/search/movie?";
     const API_Key = '4352608bd1a7a23bfe98f97c35c7468e';
 
@@ -14,8 +14,10 @@ const MovieSearch = () => {
     const [title, setTitle] = useState();
     const [date, setDate] = useState();
     const [searchResultList, setSearchResultList] = useState([]);
-    const [selectedMovie, setSelectedMovie] = useState()
+    const [selectedMovie, setSelectedMovie] = useState();
     const [clickedButton, setClickedButton] = useState(false);
+
+
 
     const onClickedButton = () => {
         setClickedButton(true);
@@ -44,9 +46,29 @@ const MovieSearch = () => {
     const onAdd = (e, resultMovie) => {
         e.preventDefault();
         onClickedButton();
-        setSelectedMovie(resultMovie)
-        console.log(resultMovie)
+        setSelectedMovie(resultMovie);
+        console.log(resultMovie.id)
+
+        const requestActors = axios.get(`https://api.themoviedb.org/3/movie/${resultMovie.id}/credits?api_key=${API_Key}`);
+        const requestSimilar = axios.get(`https://api.themoviedb.org/3/movie/${resultMovie.id}/similar?api_key=${API_Key}`);
+        const requestDetails = axios.get(`https://api.themoviedb.org/3/movie/${resultMovie.id}?api_key=${API_Key}`);
+
+        axios.all([requestActors, requestSimilar, requestDetails]).then(axios.spread((...res) => {
+            const actors = res[0];
+            const similar = res[1];
+            const details = res[2];
+
+            let categories = details.data.genres;
+            let finalCategories = categories.map(categories => categories.name);
+            
+            let finalActors = actors.data.cast.slice(0, 3).map(actors => actors.name)
+
+            let finalSimilar = similar.data.results.slice(0, 3).map(similar => similar.title)
+
+            setSelectedMovie({ ...resultMovie, actors: finalActors, similar: finalSimilar, categories: finalCategories });
+        })).catch(err => alert(err));
     }
+
 
     return (
         <article>
@@ -65,9 +87,9 @@ const MovieSearch = () => {
 
                         <input type='submit' value='Rechercher'></input>
                     </form>
-                    < SearchResultList searchResultList={searchResultList} selectedChildMovie={selectedChildMovie} onClickedButton={onClickedButton} onAdd={onAdd}/>
-                </div> : < AddMovie selectedMovie={selectedMovie}/>
-                }
+                    < SearchResultList searchResultList={searchResultList} onClickedButton={onClickedButton} onAdd={onAdd} />
+                </div> : < AddMovie selectedMovie={selectedMovie} />
+            }
         </article>
     )
 }

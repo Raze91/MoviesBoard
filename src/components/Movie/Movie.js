@@ -6,7 +6,7 @@ const Movie = (props) => {
     let movie = props.movie;
     return (
         <section className='movieCard'>
-            <Link to='/detailed'>
+            <Link to={`/detailed/${movie.id}`}>
                 <img className='img-responsive' src={movie.poster} alt='Spider-Man Far From Home' />
             </Link>
             <div className='text-ctnr'>

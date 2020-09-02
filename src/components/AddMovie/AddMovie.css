@@ -5,9 +5,13 @@
     margin: auto;
 }
 
-.addForm label:not(label:nth-of-type(1)) {
+.addForm label {
     margin-top: 10px;
     text-align: left;
+}
+
+.addForm label:not(label:first-of-type){
+    margin-top: 0;
 }
 
 .addForm input[type=submit] {

@@ -1,6 +1,6 @@
-import React , { useState }from 'react';
+import React from 'react';
 import './SearchResultList.css';
-import SearchResult from '../SearchResult/SearchResult.js'
+import SearchResult from './SearchResult/SearchResult.js'
 
 const SearchResultList = (props) => {
 

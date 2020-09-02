@@ -4,6 +4,7 @@ import './AddMovie.css'
 const AddMovie = (props) => {
 
     let movie = props.selectedMovie;
+
     return (
         <form className="addForm">
             <h1>Formulaire d'ajout de film</h1>
@@ -20,14 +21,14 @@ const AddMovie = (props) => {
             <label>Langue d'origine : </label>
             <input type='text' defaultValue={movie.original_language}></input>
 
-            <label>Catégorie : </label>
-            <input type="text"></input>
+            <label>Catégorie(s) : </label>
+            <input type="text" defaultValue={movie.categories}></input>
 
             <label>Titres similaires : </label>
-            <input type="text"></input>
+            <input type="text" defaultValue={movie.similar}></input>
 
             <label>Acteurs : </label>
-            <input type="text"></input>
+            <input type="text" defaultValue={movie.actors}></input>
 
             <label>Description : </label>
             <textarea type="text" defaultValue={movie.overview}></textarea>

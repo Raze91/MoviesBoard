@@ -7,10 +7,10 @@ const Movies = (props) => {
     let movieList = props.movies;
 
     return (
-        <section>
+        <section className="movies-ctnr">
             <h2>Bibliothèque de films</h2>
             {movieList.map((movie, index) => (
-                <Movie movie={movie} key={index}/>
+                <Movie movie={movie} key={index} />
             ))}
         </section>
     )
