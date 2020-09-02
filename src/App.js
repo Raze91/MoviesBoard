@@ -36,7 +36,7 @@ function App() {
           < Movies movies={movies} />
           <Link className="toMovieSearch" to='/MovieSearch'>Ajouter plus de films</Link>
         </Route>
-        <Route exact path='/detailed/:id'>
+        <Route exact path='/movie/:id'>
           < DetailedMovie movies={movies}/>
         </Route>
         <Route exact path='/MovieSearch'>

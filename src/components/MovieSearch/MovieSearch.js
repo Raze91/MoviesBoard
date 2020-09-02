@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './MovieSearch.css';
 import axios from 'axios'
-import SearchResultList from './SearchResultList/SearchResultList.js'
+import SearchResultList from '../SearchResultList/SearchResultList.js'
 import AddMovie from '../AddMovie/AddMovie';
 
 const MovieSearch = (props) => {

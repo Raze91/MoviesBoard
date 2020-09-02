@@ -1,0 +1,16 @@
+.actorCtnr {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 10px auto;
+    justify-content: space-around;
+}
+
+.actorCtnr img {
+    width: 100%;
+}
+
+.actor {
+    width: 15%;
+    min-width: 205px;
+}
