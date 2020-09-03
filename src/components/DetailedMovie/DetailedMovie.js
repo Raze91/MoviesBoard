@@ -10,7 +10,6 @@ const DetailedMovie = (props) => {
 
     let detailedMovie = props.movies.filter(movie => movie.id == id.id);
 
-    console.log(detailedMovie[0]);
     return (
         <article className="detailed">
             {detailedMovie.length > 0 ?
@@ -23,13 +22,13 @@ const DetailedMovie = (props) => {
                     <div >
                         <h2>Liste des acteurs</h2>
                         <div className="actorCtnr">
-                            {detailedMovie[0].actors.map((actor, key) => (< DetailedActors actor={actor} />))}
+                            {detailedMovie[0].actors.map((actor, key) => (< DetailedActors actor={actor} key={key}/>))}
                         </div>
                     </div>
                     <div >
                         <h2>Films similaires</h2>
                         <div className="similarCtnr">
-                            {detailedMovie[0].similar_movies.map((similar, key) => (< DetailedSimilar similar={similar} />))}
+                            {detailedMovie[0].similar_movies.map((similar, key) => (< DetailedSimilar similar={similar} key={key}/>))}
                         </div>
                     </div>
                     <div className='btn-ctnr'>

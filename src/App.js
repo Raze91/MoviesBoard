@@ -16,17 +16,16 @@ function App() {
 
 
   const onDelete = (e, movie) => {
-        e.preventDefault();
-        console.log(movie.title , movie.id);
+    e.preventDefault();
 
-        axios.delete(`http://localhost:3000/movies/${movie.id}`)
-            .then(result => {
-                console.log(movie.title + ' a été supprimé') ;
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
+    axios.delete(`http://localhost:3000/movies/${movie.id}`)
+      .then(result => {
+        console.log(movie.title + ' a été supprimé');
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
 
 
   useEffect(() => {
@@ -45,17 +44,20 @@ function App() {
       <main className="App">
         <Route exact path="/">
           < MovieFilter />
-          < Movies movies={movies} onDelete={onDelete}/>
+          < Movies movies={movies} onDelete={onDelete} />
           <Link className="toMovieSearch" to='/MovieSearch'>Ajouter plus de films</Link>
         </Route>
         <Route exact path='/movie/:id'>
-          < DetailedMovie movies={movies} onDelete={onDelete}/>
+          < DetailedMovie movies={movies} onDelete={onDelete} />
         </Route>
         <Route exact path='/MovieSearch'>
           < MovieSearch />
         </Route>
         <Route exact path='/AddMovie'>
           < AddMovie />
+        </Route>
+        <Route exact path="/movie/edit/:id">
+          <h1>Page Edit</h1>
         </Route>
       </main>
     </Router>
