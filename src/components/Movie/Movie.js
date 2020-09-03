@@ -16,7 +16,7 @@ const Movie = (props) => {
 
                 <div className='btn-ctnr'>
                     <Link to='/modify' className='modify'>Modifier</Link>
-                    <Link to='/delete' className='delete'>Supprimer</Link>
+                    <input className="delete" type="submit" value="Supprimer" onClick={(e) => props.onDelete(e, movie)}></input>
                 </div>
             </div>
         </section>

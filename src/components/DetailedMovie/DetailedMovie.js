@@ -34,7 +34,7 @@ const DetailedMovie = (props) => {
                     </div>
                     <div className='btn-ctnr'>
                         <Link to='/modify' className='modify'>Modifier</Link>
-                        <Link to='/delete' className='delete'>Supprimer</Link>
+                        <input className="delete" type="submit" value="Supprimer" onClick={(e) => props.onDelete(e, detailedMovie[0])}></input>
                     </div>
                     <img className="backdrop" src={detailedMovie[0].backdrop} />
                 </section>

@@ -9,12 +9,24 @@ import MovieFilter from './components/MovieFilter/MovieFilter.js'
 import MovieSearch from './components/MovieSearch/MovieSearch.js'
 import AddMovie from './components/AddMovie/AddMovie.js'
 
-// const axios = require('axios');
-
 
 function App() {
 
   const [movies, setMovies] = useState([]);
+
+
+  const onDelete = (e, movie) => {
+        e.preventDefault();
+        console.log(movie.title , movie.id);
+
+        axios.delete(`http://localhost:3000/movies/${movie.id}`)
+            .then(result => {
+                console.log(movie.title + ' a été supprimé') ;
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
 
   useEffect(() => {
@@ -33,11 +45,11 @@ function App() {
       <main className="App">
         <Route exact path="/">
           < MovieFilter />
-          < Movies movies={movies} />
+          < Movies movies={movies} onDelete={onDelete}/>
           <Link className="toMovieSearch" to='/MovieSearch'>Ajouter plus de films</Link>
         </Route>
         <Route exact path='/movie/:id'>
-          < DetailedMovie movies={movies}/>
+          < DetailedMovie movies={movies} onDelete={onDelete}/>
         </Route>
         <Route exact path='/MovieSearch'>
           < MovieSearch />

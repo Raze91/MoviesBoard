@@ -43,6 +43,7 @@
     color: white;
     width: 90px;
     border-radius: 30px;
+    border: none;
 }
 
 .modify ,.delete {
