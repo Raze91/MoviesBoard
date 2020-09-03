@@ -5,6 +5,9 @@ const AddMovie = (props) => {
 
     let movie = props.selectedMovie;
 
+    console.log(movie);
+
+    
     return (
         <form className="addForm">
             <h1>Formulaire d'ajout de film</h1>
@@ -24,16 +27,26 @@ const AddMovie = (props) => {
             <label>Catégorie(s) : </label>
             <input type="text" defaultValue={movie.categories}></input>
 
-            <label>Titres similaires : </label>
-            <input type="text" defaultValue={movie.similar}></input>
+            {movie.similar_movies ?
+                movie.similar_movies.map((similar, index) => (
+                    <label key={index}>Titres similaire {index} :
+                        <input type="text" defaultValue={similar.title}></input>
+                    </label>
+                )) : <p>Pas de films similaires</p>
+            }
 
-            <label>Acteurs : </label>
-            <input type="text" defaultValue={movie.actors}></input>
+            {movie.actors ?
+                movie.actors.map((actor, index) => (
+                    <label key={index}>Acteur {index} :
+                        <input type="text" defaultValue={actor.name}></input>
+                    </label>
+                )) : <p>Pas d'acteur</p>
+            }
 
             <label>Description : </label>
             <textarea type="text" defaultValue={movie.overview}></textarea>
 
-            <input type="submit" value="Ajouter"></input>
+            <input type="submit" value="Créer" onClick={(e) => props.onCreate(e, movie)}></input>
         </form>
     )
 }
