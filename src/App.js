@@ -7,7 +7,7 @@ import Movies from './components/Movies/Movies.js'
 import DetailedMovie from './components/DetailedMovie/DetailedMovie.js'
 import MovieFilter from './components/MovieFilter/MovieFilter.js'
 import MovieSearch from './components/MovieSearch/MovieSearch.js'
-import AddMovie from './components/AddMovie/AddMovie.js'
+import EditMovie from './components/EditMovie/EditMovie.js'
 
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
           < MovieSearch movies={movies} />
         </Route>
         <Route exact path="/movie/edit/:id">
-          <h1>EditMovie</h1>
+          < EditMovie movies={movies} />
         </Route>
       </main>
     </Router>
