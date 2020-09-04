@@ -13,7 +13,11 @@ import AddMovie from './components/AddMovie/AddMovie.js'
 function App() {
 
   const [movies, setMovies] = useState([]);
+  const [needRefresh, setNeedRefresh] = useState(false);
 
+  // const onNeedRefresh = () => {
+  //   location.reload();
+  // }
 
   const onDelete = (e, movie) => {
     e.preventDefault();
@@ -54,7 +58,7 @@ function App() {
           < MovieSearch movies={movies} />
         </Route>
         <Route exact path="/movie/edit/:id">
-          < AddMovie selectedMovie={movies}/>
+          <h1>EditMovie</h1>
         </Route>
       </main>
     </Router>

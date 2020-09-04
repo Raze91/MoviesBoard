@@ -5,12 +5,7 @@ import axios from 'axios'
 
 const AddMovie = (props) => {
 
-    console.log('props',props.selectedMovie)
-
-    let finalCategories;
-    
     const [resultMovie, setResultMovie] = useState(props.selectedMovie);
-    const [movie, setMovie] = useState();
     const [formData, setFormData] = useState({
         title: '',
         originalTitle: '',
@@ -18,18 +13,12 @@ const AddMovie = (props) => {
         language: '',
         categories: [],
         description: '',
+        poster: '',
+        backdrop: '',
         actors: [{}],
         similar_movies: [{}]
     });
-    
-    
-    // if(resultMovie) {
-    //     setMovie(resultMovie);
-    //     console.log(movie)
-    // }
 
-    console.log('RESULT MOVIE', resultMovie)
-    
     useEffect(() => {
         const requestActors = axios.get(`https://api.themoviedb.org/3/movie/${resultMovie.id}/credits?api_key=${props.API_Key}`);
         const requestSimilar = axios.get(`https://api.themoviedb.org/3/movie/${resultMovie.id}/similar?api_key=${props.API_Key}`);
@@ -57,8 +46,6 @@ const AddMovie = (props) => {
                     })
                 })
 
-
-
                 const similar = baseSimilar.data.results.slice(0, 3).map(similar => similar)
 
                 let finalSimilar = [];
@@ -80,15 +67,15 @@ const AddMovie = (props) => {
                     actors: finalActors,
                     similar_movies: finalSimilar
                 })
-                
+
                 console.log('MOVIE', resultMovie);
                 setFormData({
                     title: resultMovie.title,
-                    originalTitle: resultMovie.original_title,
-                    date: resultMovie.release_date,
-                    language: resultMovie.original_language,
+                    release_date: resultMovie.release_date,
                     categories: finalCategories,
                     description: resultMovie.overview,
+                    poster: `http://image.tmdb.org/t/p/w185${resultMovie.poster_path}`,
+                    backdrop: `http://image.tmdb.org/t/p/w185${resultMovie.backdrop_path}`,
                     actors: finalActors,
                     similar_movies: finalSimilar
                 });
@@ -97,14 +84,8 @@ const AddMovie = (props) => {
     }, [])
 
 
-    let Movie;
-    let id = useParams();
 
-    if (resultMovie.title === undefined) {
-        Movie = resultMovie.filter(movie => movie.id == id.id)[0];
-    }
 
-    
 
     const onUpdateData = event => {
         const target = event.target,
@@ -123,74 +104,36 @@ const AddMovie = (props) => {
 
     return (
         <form className="addForm">
-            {resultMovie.title === undefined && Movie !== undefined ?
-                <>
-                    <h1>Formulaire de modification de film</h1>
+            <h1>Formulaire d'ajout de film</h1>
 
-                    <label>Titre : </label>
-                    <input required type='text' name="title" defaultValue={Movie.title} onChange={onUpdateData}></input>
+            <label>Titre : </label>
+            <input required type='text' name="title" defaultValue={resultMovie.title} onChange={onUpdateData}></input>
 
-                    <label>Date de l'ajout : </label>
-                    <input required type="date" name="date" defaultValue={Movie.release_date} onChange={onUpdateData}></input>
+            <label>Date de l'ajout : </label>
+            <input required type="date" name="date" defaultValue={resultMovie.release_date} onChange={onUpdateData}></input>
 
-                    <label>Catégorie(s) : </label>
-                    <input required type="text" name="categories" defaultValue={Movie.categories} onChange={onUpdateData}></input>
+            <label>Catégorie(s) : </label>
+            <input required type="text" name="categories" defaultValue={resultMovie.categories} onChange={onUpdateData}></input>
 
-                    {Movie.similar_movies ?
-                        Movie.similar_movies.map((similar, index) => (
-                            <label key={index}>Titres similaire {index} :
-                                <input required type="text" defaultValue={similar.title}></input>
-                            </label>
-                        )) : <p>Pas de films similaires</p>
-                    }
-
-                    {Movie.actors ?
-                        Movie.actors.map((actor, index) => (
-                            <label key={index}>Acteur {index} :
-                                <input required type="text" defaultValue={actor.name}></input>
-                            </label>
-                        )) : <p>Pas d'acteur</p>
-                    }
-
-                    <label>Description : </label>
-                    <textarea required type="text" name="description" defaultValue={Movie.description} onChange={onUpdateData}></textarea>
-
-                    <input type="submit" value="Modifier" onClick={(e) => props.onCreate(e, Movie)}></input>
-                </>
-                :
-                <>
-                    <h1>Formulaire d'ajout de film</h1>
-
-                    <label>Titre : </label>
-                    <input required type='text' name="title" defaultValue={resultMovie.title} onChange={onUpdateData}></input>
-
-                    <label>Date de l'ajout : </label>
-                    <input required type="date" name="date" defaultValue={resultMovie.release_date} onChange={onUpdateData}></input>
-
-                    <label>Catégorie(s) : </label>
-                    <input required type="text" name="categories" defaultValue={resultMovie.categories} onChange={onUpdateData}></input>
-
-                    {resultMovie.similar_movies ?
-                        resultMovie.similar_movies.map((similar, index) => (
-                            <label key={index}>Titres similaire {index} :
-                                <input required type="text" defaultValue={similar.title} onChange={onUpdateData}></input>
-                            </label>
-                        )) : <p>Pas de films similaires</p>
-                    }
-                    {resultMovie.actors ?
-                        resultMovie.actors.map((actor, index) => (
-                            <label key={index}>Acteur {index} :
-                                <input required type="text" defaultValue={actor.name} onChange={onUpdateData}></input>
-                            </label>
-                        )) : <p>Pas d'acteur</p>
-                    }
-
-                    <label>Description : </label>
-                    <textarea required type="text" name="description" defaultValue={resultMovie.overview} onChange={onUpdateData}></textarea>
-
-                    <input type="submit" value="Créer" onClick={(e) => props.onCreate(e, formData)}></input>
-                </>
+            {resultMovie.similar_movies ?
+                resultMovie.similar_movies.map((similar, index) => (
+                    <label key={index}>Titres similaire {index} :
+                        <input required type="text" defaultValue={similar.title} onChange={onUpdateData}></input>
+                    </label>
+                )) : <p>Pas de films similaires</p>
             }
+            {resultMovie.actors ?
+                resultMovie.actors.map((actor, index) => (
+                    <label key={index}>Acteur {index} :
+                        <input required type="text" defaultValue={actor.name} onChange={onUpdateData}></input>
+                    </label>
+                )) : <p>Pas d'acteur</p>
+            }
+
+            <label>Description : </label>
+            <textarea required type="text" name="description" defaultValue={resultMovie.overview} onChange={onUpdateData}></textarea>
+
+            <input type="submit" value="Créer" onClick={(e) => props.onCreate(e, formData)}></input>
         </form>
     )
 }
