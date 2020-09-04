@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './DetailedMovie.css'
-import DetailedActors from '../DetailedActors/DetailedActors';
-import DetailedSimilar from '../DetailedSimilar/DetailedSimilar'
+import DetailedActors from './DetailedActors/DetailedActors';
+import DetailedSimilar from './DetailedSimilar/DetailedSimilar'
 
 const DetailedMovie = (props) => {
 

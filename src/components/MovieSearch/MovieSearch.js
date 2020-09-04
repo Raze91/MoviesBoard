@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './MovieSearch.css';
 import axios from 'axios'
-import SearchResultList from '../SearchResultList/SearchResultList.js'
+import SearchResultList from './SearchResultList/SearchResultList.js'
 import AddMovie from '../AddMovie/AddMovie';
 
 const MovieSearch = (props) => {
@@ -67,25 +67,25 @@ const MovieSearch = (props) => {
         axios.all([requestActors, requestSimilar, requestDetails]).then(axios.spread((...res) => {
             const baseActors = res[0];
             const baseSimilar = res[1];
-            const baseDetails = res[2];
+            const baseCategories = res[2];
+            console.log('BASE DETAILS ',baseCategories)
 
-            let categories = baseDetails.data.genres;
-            let finalCategories = categories.map(categories => categories.name);
-
+            let categories = baseCategories.data.genres;
+            let finalCategories = categories.map(category => category.name);
             let actors = baseActors.data.cast.slice(0, 6).map(actor => actor)
-
+            
             let finalActors = [];
             actors.map(actor => {
-                console.log(actor)
                 finalActors.push({
                     name: actor.name,
                     photo: `http://image.tmdb.org/t/p/w185${actor.profile_path}`,
                     character: actor.character
                 })
             })
-
-
-            let similar = baseSimilar.data.results.slice(0, 3).map(similar => similar)
+            
+            
+                
+            const similar = baseSimilar.data.results.slice(0, 3).map(similar => similar)
 
             let finalSimilar = [];
             similar.map(similar => {
@@ -96,18 +96,19 @@ const MovieSearch = (props) => {
                 })
             })
             // setSelectedMovie({...resultMovie, actors: finalActors, similar: finalSimilar, categories: finalCategories});
+                setSelectedMovie({
+                    title: resultMovie.title,
+                    release_date: resultMovie.release_date,
+                    categories: finalCategories,
+                    description: resultMovie.overview,
+                    poster: `http://image.tmdb.org/t/p/w185${resultMovie.poster_path}`,
+                    backdrop: `http://image.tmdb.org/t/p/w185${resultMovie.backdrop_path}`,
+                    actors: finalActors,
+                    similar_movies: finalSimilar
+                })
 
-            setSelectedMovie({
-                title: resultMovie.title,
-                release_date: resultMovie.release_date,
-                categories: finalCategories,
-                description: resultMovie.overview,
-                poster: `http://image.tmdb.org/t/p/w185${resultMovie.poster_path}`,
-                backdrop: `http://image.tmdb.org/t/p/w185${resultMovie.backdrop_path}`,
-                actors: finalActors,
-                similar_movies: finalSimilar
-            })
-
+            console.log(finalCategories)
+            
         })).catch(err => alert(err));
     }
 

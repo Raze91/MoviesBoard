@@ -23,18 +23,12 @@ const AddMovie = (props) => {
           name = target.name;
      
         const data = { ...formData };
-        if(name === 'categories') {
-            console.log(target);
-        }
+        
         data[name] = value;
         setFormData(data);
 
         console.log(data)
       };
-
-      const onUpdateCategories = event => {
-        console.log()
-      }
 
       console.log(formData)
     
@@ -76,7 +70,7 @@ const AddMovie = (props) => {
             <label>Description : </label>
             <textarea required type="text" name="description" defaultValue={movie.overview} onChange={onUpdateData}></textarea>
 
-            <input type="submit" value="Créer" onClick={(e) => props.onCreate(e, formData)}></input>
+            <input type="submit" value="Créer" onClick={(e) => props.onCreate(e, movie)}></input>
         </form>
     )
 }
