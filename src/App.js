@@ -14,18 +14,32 @@ function App() {
 
   const [movies, setMovies] = useState([]);
 
-
   const onDelete = (e, movie) => {
     e.preventDefault();
 
     axios.delete(`http://localhost:3000/movies/${movie.id}`)
       .then(result => {
         console.log(movie.title + ' a été supprimé');
-        window.location.reload()
+        window.location.replace('/')
       })
       .catch(error => {
-        console.log(error);
+        alert(error);
       })
+  }
+
+  const onEdit = (e, movie, id) => {
+    e.preventDefault();
+
+    console.log(movie);
+
+    axios.put(`http://localhost:3000/movies/${id}`, movie)
+    .then(result => {
+      console.log(movie.title + ' a été modifié');
+      window.location.replace('/');
+    })
+    .catch(error => {
+      alert(error)
+    })
   }
 
   useEffect(() => {
@@ -54,7 +68,7 @@ function App() {
           < MovieSearch movies={movies} />
         </Route>
         <Route exact path="/movie/edit/:id">
-          < EditMovie movies={movies} />
+          < EditMovie movies={movies} onEdit={onEdit} />
         </Route>
       </main>
     </Router>

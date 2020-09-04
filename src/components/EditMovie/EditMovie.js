@@ -1,41 +1,40 @@
 import React, { useState } from 'react';
 import './EditMovie.css'
-import { useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 const EditMovie = (props) => {
     
-    const [formData, setFormData] = useState({
-        title: '',
-        originalTitle: '',
-        date: '',
-        language: '',
-        categories: [],
-        description: '',
-        poster: '',
-        backdrop: '',
-        actors: [{}],
-        similar_movies: [{}]
-    });
-
     let id = useParams();
-
+    
     let editedMovie = props.movies.filter(movie => movie.id == id.id)[0];
     console.log(props.movies)
     console.log(editedMovie)
 
+    const [formData, setFormData] = useState({
+        title: editedMovie.title,
+        release_date: editedMovie.release_date,
+        categories: editedMovie.categories,
+        description: editedMovie.description,
+        poster: editedMovie.poster,
+        backdrop: editedMovie.backdrop,
+        actors: editedMovie.actors,
+        similar_movies: editedMovie.similar_movies,
+    });
+
+
     const onUpdateData = event => {
         const target = event.target,
-          value = target.value,
-          name = target.name;
-     
+            value = target.value,
+            name = target.name;
+
         const data = { ...formData };
         data[name] = value;
         console.log('data', data)
         setFormData(data);
-      };
-    
-      console.log(formData)
+    };
+
+    console.log('FORM DATA', formData)
 
     return (
         <form className="addForm">
@@ -68,7 +67,7 @@ const EditMovie = (props) => {
             <label>Description : </label>
             <textarea required type="text" name="description" defaultValue={editedMovie.description} onChange={onUpdateData}></textarea>
 
-            <input type="submit" value="Créer" onClick={(e) => props.onCreate(e, formData)}></input>
+            <input type="submit" value="Modifier" onClick={(e) => props.onEdit(e, formData, editedMovie.id)}></input>
         </form>
     )
 }

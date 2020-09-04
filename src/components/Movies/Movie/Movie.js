@@ -7,7 +7,7 @@ const Movie = (props) => {
     return (
         <div className='movieCard'>
             <Link to={`/movie/${movie.id}`}>
-                <img className='img-responsive' src={movie.poster} alt='Spider-Man Far From Home' />
+                <img className='img-responsive' src={movie.poster} alt={movie.title} />
             </Link>
             <div className='text-ctnr'>
                 <h2 className='title'>{movie.title}</h2>
