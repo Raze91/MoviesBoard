@@ -12,7 +12,7 @@ const SearchResult = (props) => {
                 <p className='date'>{resultMovie.release_date}</p>
 
                 <div className='btn-ctnr'>
-                    <button onClick={(e) => { props.onAdd(e, resultMovie) }}>Ajouter</button>
+                    <button onClick={(e) => { props.getSelectedMovie(e, resultMovie) }}>Ajouter</button>
                 </div>
             </div>
         </div>

@@ -13,6 +13,9 @@
 .movieCard .text {
     max-width: 80%;
     margin: auto;
+    text-overflow: ellipsis;
+    max-height: 65px;
+    overflow: hidden;
 }
 
 .movieCard .img-responsive {
