@@ -23,6 +23,7 @@ const MovieSearch = (props) => {
         axios.post('http://localhost:3000/movies', movie)
             .then(result => {
                 console.log('Film créé', result);
+                window.location.replace('/')
             })
             .catch(error => {
                 console.log(error)

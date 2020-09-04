@@ -13,11 +13,7 @@ import AddMovie from './components/AddMovie/AddMovie.js'
 function App() {
 
   const [movies, setMovies] = useState([]);
-  const [needRefresh, setNeedRefresh] = useState(false);
 
-  // const onNeedRefresh = () => {
-  //   location.reload();
-  // }
 
   const onDelete = (e, movie) => {
     e.preventDefault();
@@ -25,12 +21,12 @@ function App() {
     axios.delete(`http://localhost:3000/movies/${movie.id}`)
       .then(result => {
         console.log(movie.title + ' a été supprimé');
+        window.location.reload()
       })
       .catch(error => {
         console.log(error);
       })
   }
-
 
   useEffect(() => {
     axios.get('http://localhost:3000/movies')
