@@ -9,7 +9,8 @@ const DetailedMovie = (props) => {
     let id = useParams();
 
     let detailedMovie = props.movies.filter(movie => movie.id == id.id);
-
+    console.log(props.movies)
+    console.log(detailedMovie)
     return (
         <article className="detailed">
             {detailedMovie.length > 0 ?
@@ -32,7 +33,7 @@ const DetailedMovie = (props) => {
                         </div>
                     </div>
                     <div className='btn-ctnr'>
-                        <Link to='/modify' className='modify'>Modifier</Link>
+                        <Link to={`/movie/edit/${detailedMovie[0].id}`} className='modify'>Modifier</Link>
                         <input className="delete" type="submit" value="Supprimer" onClick={(e) => props.onDelete(e, detailedMovie[0])}></input>
                     </div>
                     <img className="backdrop" src={detailedMovie[0].backdrop} />

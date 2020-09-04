@@ -6,7 +6,8 @@ import AddMovie from '../AddMovie/AddMovie';
 
 const MovieSearch = (props) => {
 
-
+    let movies = props.movies;
+    console.log(movies)
     const url = "https://api.themoviedb.org/3/search/movie?";
     const API_Key = '4352608bd1a7a23bfe98f97c35c7468e';
 
@@ -106,8 +107,10 @@ const MovieSearch = (props) => {
                     actors: finalActors,
                     similar_movies: finalSimilar
                 })
-
-            console.log(finalCategories)
+                if(selectedMovie !== undefined) {
+                    
+                    console.log(selectedMovie)
+                }
             
         })).catch(err => alert(err));
     }

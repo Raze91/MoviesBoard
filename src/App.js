@@ -51,13 +51,10 @@ function App() {
           < DetailedMovie movies={movies} onDelete={onDelete} />
         </Route>
         <Route exact path='/MovieSearch'>
-          < MovieSearch />
-        </Route>
-        <Route exact path='/AddMovie'>
-          < AddMovie />
+          < MovieSearch movies={movies} />
         </Route>
         <Route exact path="/movie/edit/:id">
-          <h1>Page Edit</h1>
+          < AddMovie selectedMovie={movies}/>
         </Route>
       </main>
     </Router>
