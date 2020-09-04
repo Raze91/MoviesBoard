@@ -5,10 +5,12 @@ import axios from 'axios'
 
 const AddMovie = (props) => {
 
-    // let resultMovie = props.selectedMovie;
     console.log('props',props.selectedMovie)
 
+    let finalCategories;
+    
     const [resultMovie, setResultMovie] = useState(props.selectedMovie);
+    const [movie, setMovie] = useState();
     const [formData, setFormData] = useState({
         title: '',
         originalTitle: '',
@@ -16,6 +18,8 @@ const AddMovie = (props) => {
         language: '',
         categories: [],
         description: '',
+        actors: [{}],
+        similar_movies: [{}]
     });
     
     
@@ -85,6 +89,8 @@ const AddMovie = (props) => {
                     language: resultMovie.original_language,
                     categories: finalCategories,
                     description: resultMovie.overview,
+                    actors: finalActors,
+                    similar_movies: finalSimilar
                 });
 
             })).catch(err => alert(err));
@@ -167,14 +173,14 @@ const AddMovie = (props) => {
                     {resultMovie.similar_movies ?
                         resultMovie.similar_movies.map((similar, index) => (
                             <label key={index}>Titres similaire {index} :
-                                <input required type="text" defaultValue={similar.title}></input>
+                                <input required type="text" defaultValue={similar.title} onChange={onUpdateData}></input>
                             </label>
                         )) : <p>Pas de films similaires</p>
                     }
                     {resultMovie.actors ?
                         resultMovie.actors.map((actor, index) => (
                             <label key={index}>Acteur {index} :
-                                <input required type="text" defaultValue={actor.name}></input>
+                                <input required type="text" defaultValue={actor.name} onChange={onUpdateData}></input>
                             </label>
                         )) : <p>Pas d'acteur</p>
                     }
@@ -182,7 +188,7 @@ const AddMovie = (props) => {
                     <label>Description : </label>
                     <textarea required type="text" name="description" defaultValue={resultMovie.overview} onChange={onUpdateData}></textarea>
 
-                    <input type="submit" value="Créer" onClick={(e) => props.onCreate(e, resultMovie)}></input>
+                    <input type="submit" value="Créer" onClick={(e) => props.onCreate(e, formData)}></input>
                 </>
             }
         </form>
