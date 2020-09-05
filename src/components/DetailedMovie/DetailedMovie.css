@@ -20,14 +20,19 @@
 }
 
 
-.detailedCtnr .poster, 
-.detailedCtnr .backdrop {
-    margin-top: 20px;
+.detailedCtnr .poster {
+    padding-top: 45%;
 }
-
+.detailedCtnr .backdrop {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
 .detailedCtnr .btn-ctnr {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .detailedCtnr .btn-ctnr .modify {
@@ -48,6 +53,7 @@
     cursor: pointer;
     font-size: 16px;
 }
+
 
 @media screen and (max-width: 768px) {
     .detailedDescription {
