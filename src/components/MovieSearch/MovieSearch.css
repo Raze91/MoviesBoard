@@ -1,11 +1,48 @@
+.searchForm {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
 
-.searchForm legend {
+.searchForm label {
+  margin: 5px 10px 5px 0;
+}
+
+.searchForm input {
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.searchForm .search:hover {
+  background-color: cornflowerblue;
+  cursor: pointer;
+}
+
+.searchForm .search {
+  width: 10%;
+  background-color: skyblue;
+  font-size: 16px;
+  border: none;
+}
+
+/* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
+@media (max-width: 800px) {
+  .searchForm input {
     margin: 10px 0;
+  }
+
+  .searchForm {
+    flex-direction: column;
+    align-items: stretch;
+    width: 80%;
+    margin: auto;
+  }
+  .searchForm .search {
+      width: 50% !important;
+      margin: 10px auto;
+      background-color: skyblue;
+      font-size: 16px;
+  }
 }
-
-.searchForm label:nth-of-type(2),
-.searchForm input[type=submit] {
-    margin-left: 10px;
-}
-
-

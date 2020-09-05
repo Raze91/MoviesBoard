@@ -55,20 +55,20 @@ const MovieSearch = (props) => {
         e.preventDefault();
         onClickedButton()
         setSelectedMovie(movieResult)
-        
-    }
-    if(selectedMovie !== undefined) {
 
-        console.log('SELECTED MOVIE',selectedMovie)
+    }
+    if (selectedMovie !== undefined) {
+
+        console.log('SELECTED MOVIE', selectedMovie)
     }
 
     return (
         <article>
             {!clickedButton ?
                 <div>
+                    <h1 className="searchTitle">Rechercher les films</h1>
                     <form className="searchForm" onSubmit={(e) => { onSearch(e) }}>
 
-                        <legend>Rechercher les films</legend>
 
                         <label>Titre : </label>
                         <input type='text' onChange={(e) => { onTitleChange(e) }} ></input>
@@ -77,7 +77,7 @@ const MovieSearch = (props) => {
                         <input type='date' onChange={(e) => { onDateChange(e) }}></input>
 
 
-                        <input type='submit' value='Rechercher'></input>
+                        <input type='submit' className="search" value='Rechercher'></input>
                     </form>
                     < SearchResultList searchResultList={searchResultList} onClickedButton={onClickedButton} getSelectedMovie={getSelectedMovie} />
                 </div> : < AddMovie selectedMovie={selectedMovie} onCreate={onCreate} />
