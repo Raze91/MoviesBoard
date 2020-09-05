@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body {
+  background-color: lightslategray;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,3 +40,20 @@
     transform: rotate(360deg);
   }
 }
+
+.toMovieSearch {
+  background-color: skyblue;
+  border-radius: 8px;
+  padding: 7px;
+  text-decoration: none;
+  color: black;
+  border: 1px solid;
+}
+
+.toMovieSearch:hover {
+  background-color: cornflowerblue;
+}
+
+/* main {
+  background-color: lightslategray;
+} */
