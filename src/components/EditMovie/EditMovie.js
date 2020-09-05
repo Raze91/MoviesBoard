@@ -4,12 +4,10 @@ import { useParams } from 'react-router-dom';
 
 
 const EditMovie = (props) => {
-    
+
     let id = useParams();
-    
+
     let editedMovie = props.movies.filter(movie => Number(movie.id) === Number(id.id))[0];
-    console.log(props.movies)
-    console.log(id.id)
 
     const [formData, setFormData] = useState({
         title: editedMovie.title,
@@ -22,19 +20,29 @@ const EditMovie = (props) => {
         similar_movies: editedMovie.similar_movies,
     });
 
-
-    const onUpdateData = event => {
+    const onUpdateData = (event, index) => {
         const target = event.target,
             value = target.value,
             name = target.name;
 
         const data = { ...formData };
-        data[name] = value;
-        console.log('data', data)
-        setFormData(data);
-    };
 
-    console.log('FORM DATA', formData)
+        switch (name) {
+            case "category" + index:
+                data.categories[index] = value;
+                break;
+            case 'similar' + index:
+                data.similar_movies[index].title = value;
+                break;
+            case 'actor' + index:
+                data.actors[index].name = value;
+                break;
+            default:
+                data[name] = value;
+                setFormData(data);
+                break;
+        }
+    };
 
     return (
         <form className="editForm">
@@ -46,20 +54,24 @@ const EditMovie = (props) => {
             <label htmlFor="date" >Date de l'ajout : </label>
             <input required type="date" name="date" defaultValue={editedMovie.release_date} onChange={onUpdateData}></input>
 
-            <label htmlFor="categories">Catégorie(s) : </label>
-            <input required type="text" name="categories" defaultValue={editedMovie.categories} onChange={onUpdateData}></input>
+            {editedMovie.categories ?
+                editedMovie.categories.map((category, index) => (
+                    <label htmlFor={"category" + index} className="categories" key={index}>Catégorie {index} :
+                        <input required type="text" name={"category" + index} defaultValue={category} onChange={(e) => onUpdateData(e, index)}></input>
+                    </label>
+                )) : <p>Pas de catégories</p>}
 
             {editedMovie.similar_movies ?
                 editedMovie.similar_movies.map((similar, index) => (
-                    <label htmlFor={"similar" + index} className="similars" key={index}>Titres similaire {index} :
-                        <input required type="text" name={"similar" + index} defaultValue={similar.title} onChange={onUpdateData}></input>
+                    <label htmlFor={"similar" + index} className="similars" key={index}>Titre similaire {index} :
+                        <input required type="text" name={"similar" + index} defaultValue={similar.title} onChange={(e) => onUpdateData(e, index)}></input>
                     </label>
                 )) : <p>Pas de films similaires</p>
             }
             {editedMovie.actors ?
                 editedMovie.actors.map((actor, index) => (
                     <label htmlFor={"actor" + index} className="actors" key={index}>Acteur {index} :
-                        <input required type="text" name={"actor" + index} defaultValue={actor.name} onChange={onUpdateData}></input>
+                        <input required type="text" name={"actor" + index} defaultValue={actor.name} onChange={(e) => onUpdateData(e, index)}></input>
                     </label>
                 )) : <p>Pas d'acteur</p>
             }

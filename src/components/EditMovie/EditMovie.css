@@ -22,9 +22,7 @@
   cursor: pointer;
 }
 
-
-
-.editForm .actors, .editForm .similars {
+.editForm .actors, .editForm .similars , .editForm .categories{
     display: flex;
     flex-direction: column;
 }
