@@ -9,8 +9,6 @@ const DetailedMovie = (props) => {
     let id = useParams();
 
     let detailedMovie = props.movies.filter(movie => Number(movie.id) === Number(id.id));
-    console.log(props.movies)
-    console.log(detailedMovie)
     return (
         <article className="detailed">
             {detailedMovie.length > 0 ?

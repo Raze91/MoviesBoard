@@ -22,9 +22,9 @@
   cursor: pointer;
 }
 
-
-
-.addForm .actors, .addForm .similars, .addForm .categories {
+.addForm .actors, 
+.addForm .similars, 
+.addForm .categories {
     display: flex;
     flex-direction: column;
 }

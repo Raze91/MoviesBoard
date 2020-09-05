@@ -85,7 +85,6 @@ const AddMovie = (props) => {
 
         const data = { ...formData };
 
-
         switch (name) {
             case "category" + index:
                 data.categories[index] = value;
@@ -97,7 +96,6 @@ const AddMovie = (props) => {
                 data.actors[index].name = value;
                 break;
             default:
-                // console.log(name);
                 data[name] = value;
                 setFormData(data);
                 break;

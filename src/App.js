@@ -18,7 +18,7 @@ function App() {
 
     axios.delete(`http://localhost:3000/movies/${movie.id}`)
       .then(result => {
-        console.log(movie.title + ' a été supprimé');
+        alert(movie.title + ' a été supprimé !');
         window.location.replace('/')
       })
       .catch(error => {
@@ -32,19 +32,18 @@ function App() {
     console.log(movie);
 
     axios.put(`http://localhost:3000/movies/${id}`, movie)
-    .then(result => {
-      console.log(movie.title + ' a été modifié');
-      window.location.replace('/');
-    })
-    .catch(error => {
-      alert(error)
-    })
+      .then(result => {
+        alert(movie.title + ' a été modifié !');
+        window.location.replace('/');
+      })
+      .catch(error => {
+        alert(error)
+      })
   }
 
   useEffect(() => {
     axios.get('http://localhost:3000/movies')
       .then((result) => {
-        console.log(result.data)
         setMovies(result.data);
       })
       .catch((error) => {

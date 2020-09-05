@@ -68,7 +68,6 @@
     font-size: 16px;
 }
 
-
 @media screen and (max-width: 768px) {
     .detailedDescription {
         width: 90%;
