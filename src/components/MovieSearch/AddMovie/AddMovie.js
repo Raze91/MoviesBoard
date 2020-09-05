@@ -78,17 +78,31 @@ const AddMovie = (props) => {
             })).catch(err => alert(err));
     }, [])
 
-    const onUpdateData = event => {
+    const onUpdateData = (event, index) => {
         const target = event.target,
             value = target.value,
             name = target.name;
 
         const data = { ...formData };
 
-        data[name] = value;
-        setFormData(data);
-    };
 
+        switch (name) {
+            case "category" + index:
+                data.categories[index] = value;
+                break;
+            case 'similar' + index:
+                data.similar_movies[index].title = value;
+                break;
+            case 'actor' + index:
+                data.actors[index].name = value;
+                break;
+            default:
+                // console.log(name);
+                data[name] = value;
+                setFormData(data);
+                break;
+        }
+    };
     return (
         <form className="addForm">
             <h1>Formulaire d'ajout de film</h1>
@@ -99,20 +113,24 @@ const AddMovie = (props) => {
             <label htmlFor="date">Date de l'ajout : </label>
             <input required type="date" name="date" defaultValue={resultMovie.release_date} onChange={onUpdateData}></input>
 
-            <label htmlFor="categories">Catégorie(s) : </label>
-            <input required type="text" name="categories" defaultValue={resultMovie.categories} onChange={onUpdateData}></input>
+            {resultMovie.categories ?
+                resultMovie.categories.map((category, index) => (
+                    <label htmlFor={"category" + index} className="categories" key={index}>Catégorie {index} :
+                        <input required type="text" name={"category" + index} defaultValue={category} onChange={(e) => onUpdateData(e, index)}></input>
+                    </label>
+                )) : <p>Pas de catégories</p>}
 
             {resultMovie.similar_movies ?
                 resultMovie.similar_movies.map((similar, index) => (
-                    <label htmlFor={"similar" + index} className="similars" key={index}>Titres similaire {index} :
-                        <input required type="text" name={"similar" + index} defaultValue={similar.title} onChange={onUpdateData}></input>
+                    <label htmlFor={"similar" + (index)} className="similars" key={index}>Titres similaire {index} :
+                        <input required type="text" name={"similar" + index} defaultValue={similar.title} onChange={(e) => onUpdateData(e, index)}></input>
                     </label>
                 )) : <p>Pas de films similaires</p>
             }
             {resultMovie.actors ?
                 resultMovie.actors.map((actor, index) => (
                     <label htmlFor={"actor" + index} className="actors" key={index}>Acteur {index} :
-                        <input required type="text" name={"actor" + index} defaultValue={actor.name} onChange={onUpdateData}></input>
+                        <input required type="text" name={"actor" + index} defaultValue={actor.name} onChange={(e) => onUpdateData(e, index)}></input>
                     </label>
                 )) : <p>Pas d'acteur</p>
             }

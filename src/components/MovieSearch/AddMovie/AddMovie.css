@@ -24,7 +24,7 @@
 
 
 
-.addForm .actors, .addForm .similars {
+.addForm .actors, .addForm .similars, .addForm .categories {
     display: flex;
     flex-direction: column;
 }
