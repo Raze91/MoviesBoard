@@ -36,3 +36,7 @@
     border: none;
     padding: 10px;
 }
+
+.notFound {
+    width: 60%;
+}

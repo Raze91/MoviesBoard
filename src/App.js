@@ -18,11 +18,10 @@ function App() {
 
     axios.delete(`http://localhost:3000/movies/${movie.id}`)
       .then(result => {
-        alert(movie.title + ' a été supprimé !');
         window.location.replace('/')
       })
       .catch(error => {
-        alert(error);
+        console.log(error);
       })
   }
 
@@ -33,7 +32,6 @@ function App() {
 
     axios.put(`http://localhost:3000/movies/${id}`, movie)
       .then(result => {
-        alert(movie.title + ' a été modifié !');
         window.location.replace('/');
       })
       .catch(error => {

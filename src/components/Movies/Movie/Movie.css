@@ -59,6 +59,10 @@
     font-size: 16px;
 } 
 
+.movieCard .notFound {
+    height: 225px;
+}
+
 @media screen and (max-width: 768px) {
 
     .movieCard {

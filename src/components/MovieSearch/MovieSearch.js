@@ -18,11 +18,10 @@ const MovieSearch = (props) => {
         e.preventDefault()
         axios.post('http://localhost:3000/movies', movie)
             .then(result => {
-                alert(movie.title + ' a été ajouté à votre bibliothèque de film !');
                 window.location.replace('/')
             })
             .catch(error => {
-                alert(error)
+                console.log(error)
             })
     }
 
@@ -45,7 +44,7 @@ const MovieSearch = (props) => {
                 setSearchResultList(result.data.results);
             })
             .catch((error) => {
-                alert(error)
+                console.log(error)
             })
     }
 

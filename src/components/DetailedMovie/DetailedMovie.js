@@ -21,6 +21,7 @@ const DetailedMovie = (props) => {
                     <p className="detailedDescription">{detailedMovie[0].description}</p>
                     <div className='btn-ctnr'>
                         <Link to={`/movie/edit/${detailedMovie[0].id}`} className='modify'>Modifier</Link>
+                        <Link to="/" className="back" >Retour</Link>
                         <input className="delete" type="submit" value="Supprimer" onClick={(e) => props.onDelete(e, detailedMovie[0])}></input>
                     </div>
                     <div >

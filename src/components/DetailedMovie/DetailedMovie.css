@@ -42,8 +42,7 @@
 
 .detailedCtnr .btn-ctnr .modify {
     background-color: darkcyan;
-    margin-right: 20px;
-    padding: 5px;
+    padding: 10px;
 }
 
 .detailedCtnr .btn-ctnr .modify:hover {
@@ -59,7 +58,16 @@
     background-color: crimson;
 }
 
-.modify ,.delete {
+.detailedCtnr .btn-ctnr .back {
+    background-color: skyblue;
+    padding: 10px;
+    margin: 0 20px;
+}
+
+.detailedCtnr .btn-ctnr .back:hover {
+    background-color: cornflowerblue;
+}
+.modify ,.delete, .back {
     text-decoration: none;
     color: white;
     border-radius: 5px;

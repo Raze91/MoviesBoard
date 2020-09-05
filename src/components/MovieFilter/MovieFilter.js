@@ -4,7 +4,7 @@ import './MovieFilter.css'
 const MovieFilter = () => {
 
     return (
-        <header>
+        <section>
 
             <h1 className="filterTitle">Filtrer les films</h1>
             <form className="filterForm">
@@ -21,7 +21,7 @@ const MovieFilter = () => {
 
                 <input type='submit' className="submit" value='Filtrer'></input>
             </form>
-        </header>
+        </section>
     )
 }
 

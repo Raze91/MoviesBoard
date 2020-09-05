@@ -21,3 +21,7 @@
 .actor div h4 {
     margin: 5px auto;
 }
+
+.actorCtnr .notFound {
+    height: 309px;
+}
