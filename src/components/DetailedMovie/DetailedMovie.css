@@ -19,10 +19,14 @@
     font-size: 24px;
 }
 
-
 .detailedCtnr .poster {
+    padding-top: 20px;
+}
+
+.detailedCtnr .isBackdrop {
     padding-top: 45%;
 }
+
 .detailedCtnr .backdrop {
     width: 100%;
     position: absolute;
@@ -36,13 +40,22 @@
 }
 
 .detailedCtnr .btn-ctnr .modify {
-    background-color: cadetblue;
+    background-color: darkcyan;
     margin-right: 20px;
     padding: 5px;
 }
 
+.detailedCtnr .btn-ctnr .modify:hover {
+    background-color: cadetblue;
+}
+
 .detailedCtnr .btn-ctnr .delete {
     background-color: brown;
+}
+
+
+.detailedCtnr .btn-ctnr .delete:hover {
+    background-color: crimson;
 }
 
 .modify ,.delete {
