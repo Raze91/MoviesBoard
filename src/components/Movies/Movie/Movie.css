@@ -33,13 +33,21 @@
 }
 
 .movieCard .modify {
-    background-color: cadetblue;
+    background-color: darkcyan;
     margin-right: 20px;
     padding: 5px;
 }
 
+.movieCard .modify:hover {
+    background-color: cadetblue;
+}
+
 .movieCard .delete {
     background-color: brown;
+}
+
+.movieCard .delete:hover {
+    background-color: crimson;
 }
 
 .modify ,.delete {

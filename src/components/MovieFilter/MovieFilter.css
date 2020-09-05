@@ -3,49 +3,50 @@
     flex-flow: row wrap;
     align-items: center;
     justify-content: center;
-  }
-
-  .filterTitle {
-      padding-top: 20px;
-      margin-top: 0;
-  }
-  
-  .filterForm label {
-    margin: 5px 10px 5px 0;
-  }
-  
-  .filterForm input {
-    margin: 5px 10px 5px 0;
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
-  
-  .filterForm .submit:hover {
-    background-color: cornflowerblue;
-  }
-  
-  .filterForm .submit {
-    width: 10%;
-    background-color: skyblue;
-    font-size: 16px;
 }
-  /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
-  @media (max-width: 800px) {
-    .filterForm input {
-      margin: 10px 0;
-    }
-  
-    .filterForm {
-      flex-direction: column;
-      align-items: stretch;
-      width: 80%;
-      margin: auto;
-    }
 
-    .filterForm .submit {
-        width: 50% !important;
-        margin: 10px auto;
-        background-color: skyblue;
-        font-size: 16px;
-    }
+.filterTitle {
+    padding-top: 20px;
+    margin-top: 0;
+}
+
+.filterForm label {
+  margin: 5px 10px 5px 0;
+}
+
+.filterForm input {
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.filterForm .submit:hover {
+  background-color: cornflowerblue;
+  cursor: pointer;
+}
+
+.filterForm .submit {
+  width: 10%;
+  background-color: skyblue;
+  font-size: 16px;
+  border: none;
+}
+
+@media (max-width: 800px) {
+  .filterForm input {
+    margin: 10px 0;
   }
+
+  .filterForm {
+    flex-direction: column;
+    align-items: stretch;
+    width: 80%;
+    margin: auto;
+  }
+  .filterForm .submit {
+      width: 50% !important;
+      margin: 10px auto;
+      background-color: skyblue;
+      font-size: 16px;
+  }
+}

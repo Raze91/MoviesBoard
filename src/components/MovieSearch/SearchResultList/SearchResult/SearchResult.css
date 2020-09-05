@@ -24,3 +24,15 @@
 .img-responsiveSearch {
     max-height: 248px;
 }
+
+.movieCardSearch .btn-ctnr .add:hover {
+    background-color: cornflowerblue;
+    cursor: pointer;
+  }
+  
+  .movieCardSearch .btn-ctnr .add {
+    background-color: skyblue;
+    font-size: 16px;
+    border: none;
+    padding: 10px;
+  }
