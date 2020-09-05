@@ -7,7 +7,7 @@ const DetailedSimilar = (props) => {
 
     return (
         <figure className="similar">
-            <img src={similar.poster} />
+            <img src={similar.poster} alt={similar.title}/>
             <figcaption>
                 <h3>{similar.title}</h3>
                 <h4>{similar.release_date}</h4>

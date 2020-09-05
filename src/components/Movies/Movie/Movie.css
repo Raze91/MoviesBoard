@@ -34,24 +34,21 @@
 
 .movieCard .modify {
     background-color: cadetblue;
-    color: white;
-    width: 80px;
-    height: 25px;
     margin-right: 20px;
-    border-radius: 30px;
+    padding: 5px;
 }
 
 .movieCard .delete {
     background-color: brown;
-    color: white;
-    width: 90px;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
 }
 
 .modify ,.delete {
     text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
 } 
 
 @media screen and (max-width: 768px) {

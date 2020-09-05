@@ -8,7 +8,7 @@ const DetailedActors = (props) => {
 
     return (
         <figure className="actor">
-            <img src={actor.photo} />
+            <img src={actor.photo} alt={actor.name} />
             <figcaption>
                 <h3>{actor.name}</h3>
                 <h4>{actor.character}</h4>

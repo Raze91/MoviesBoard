@@ -8,14 +8,14 @@ const DetailedMovie = (props) => {
 
     let id = useParams();
 
-    let detailedMovie = props.movies.filter(movie => movie.id == id.id);
+    let detailedMovie = props.movies.filter(movie => Number(movie.id) === Number(id.id));
     console.log(props.movies)
     console.log(detailedMovie)
     return (
         <article className="detailed">
             {detailedMovie.length > 0 ?
                 <section className="detailedCtnr">
-                    <img className="poster" src={detailedMovie[0].poster} />
+                    <img className="poster" src={detailedMovie[0].poster} alt={detailedMovie[0].title}/>
                     <h1 className="detailedTitle" >{detailedMovie[0].title}</h1>
                     <h2 className="detailedDate">{detailedMovie[0].release_date}</h2>
                     <h3 className="detailedCategories">{detailedMovie[0].categories.join(' / ')}</h3>
@@ -36,7 +36,7 @@ const DetailedMovie = (props) => {
                         <Link to={`/movie/edit/${detailedMovie[0].id}`} className='modify'>Modifier</Link>
                         <input className="delete" type="submit" value="Supprimer" onClick={(e) => props.onDelete(e, detailedMovie[0])}></input>
                     </div>
-                    <img className="backdrop" src={detailedMovie[0].backdrop} />
+                    <img className="backdrop" src={detailedMovie[0].backdrop} alt={`Affiche secondaire de ${detailedMovie[0].title}`}/>
                 </section>
 
                 :
