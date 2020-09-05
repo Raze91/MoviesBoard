@@ -36,22 +36,22 @@ const AddMovie = (props) => {
 
                 let finalActors = [];
                 actors.map(actor => {
-                    finalActors.push({
+                    return (finalActors.push({
                         name: actor.name,
                         photo: `http://image.tmdb.org/t/p/w185${actor.profile_path}`,
                         character: actor.character
-                    })
+                    }))
                 })
 
                 const similar = baseSimilar.data.results.slice(0, 3).map(similar => similar)
 
                 let finalSimilar = [];
                 similar.map(similar => {
-                    finalSimilar.push({
+                    return (finalSimilar.push({
                         title: similar.title,
                         poster: `http://image.tmdb.org/t/p/w185${similar.poster_path}`,
                         release_date: similar.release_date
-                    })
+                    }))
                 })
                 setResultMovie({
                     title: resultMovie.title,
