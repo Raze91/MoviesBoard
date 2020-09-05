@@ -7,9 +7,9 @@ const EditMovie = (props) => {
     
     let id = useParams();
     
-    let editedMovie = props.movies.filter(movie => movie.id == id.id)[0];
+    let editedMovie = props.movies.filter(movie => Number(movie.id) === Number(id.id))[0];
     console.log(props.movies)
-    console.log(editedMovie)
+    console.log(id.id)
 
     const [formData, setFormData] = useState({
         title: editedMovie.title,

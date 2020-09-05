@@ -2,20 +2,17 @@ import React, { useState } from 'react';
 import './MovieSearch.css';
 import axios from 'axios'
 import SearchResultList from './SearchResultList/SearchResultList.js'
-import AddMovie from '../AddMovie/AddMovie';
+import AddMovie from './AddMovie/AddMovie.js';
 
 const MovieSearch = (props) => {
 
-    let movies = props.movies;
     const url = "https://api.themoviedb.org/3/search/movie?";
-    const API_Key = '4352608bd1a7a23bfe98f97c35c7468e';
 
     const [title, setTitle] = useState();
     const [date, setDate] = useState();
     const [searchResultList, setSearchResultList] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState();
     const [clickedButton, setClickedButton] = useState(false);
-
 
     const onCreate = (e, movie) => {
         e.preventDefault()
@@ -44,7 +41,7 @@ const MovieSearch = (props) => {
 
     const onSearch = (e) => {
         e.preventDefault()
-        axios.get(`${url}api_key=${API_Key}&query=${title}&primary_release_year=${date}`)
+        axios.get(`${url}api_key=${process.env.REACT_APP_API_KEY}&query=${title}&primary_release_year=${date}`)
             .then((result) => {
                 console.log(result.data.results)
                 setSearchResultList(result.data.results);
@@ -83,7 +80,7 @@ const MovieSearch = (props) => {
                         <input type='submit' value='Rechercher'></input>
                     </form>
                     < SearchResultList searchResultList={searchResultList} onClickedButton={onClickedButton} getSelectedMovie={getSelectedMovie} />
-                </div> : < AddMovie selectedMovie={selectedMovie} onCreate={onCreate} API_Key={API_Key}/>
+                </div> : < AddMovie selectedMovie={selectedMovie} onCreate={onCreate} />
             }
         </article>
     )

@@ -6,7 +6,7 @@ const SearchResult = (props) => {
 
     return (
         <div className='movieCardSearch'>
-            <img className='img-responsiveSearch' src={`http://image.tmdb.org/t/p/w185${resultMovie.poster_path}`} alt='Film correspondant à la recherche' />
+            <img className='img-responsiveSearch' src={`http://image.tmdb.org/t/p/w185${resultMovie.poster_path}`} alt={resultMovie.title} />
             <div className='text-ctnr'>
                 <h2 className='title'>{resultMovie.title}</h2>
                 <p className='date'>{resultMovie.release_date}</p>
