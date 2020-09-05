@@ -1,0 +1,46 @@
+.editForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    width: 80%;
+    margin: auto;
+}
+
+.editForm label {
+  margin: 5px 0 5px 0;
+}
+
+.editForm input {
+  margin: 5px 0 5px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.editForm .editSubmit:hover {
+  background-color: cornflowerblue;
+  cursor: pointer;
+}
+
+
+
+.editForm .actors, .editForm .similars {
+    display: flex;
+    flex-direction: column;
+}
+
+.editForm input {
+    margin: 10px 0;
+}
+
+.editForm .editSubmit {
+    width: 30% ;
+    margin: 10px auto;
+    background-color: skyblue;
+    font-size: 16px;
+    border: none;
+  }
+
+.addDescription {
+    height: 120px;
+}
