@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './AddMovie.css'
-import { useParams } from 'react-router';
 import axios from 'axios'
 
 const AddMovie = (props) => {
@@ -20,20 +19,18 @@ const AddMovie = (props) => {
     });
 
     useEffect(() => {
-        const requestActors = axios.get(`https://api.themoviedb.org/3/movie/${resultMovie.id}/credits?api_key=${props.API_Key}`);
-        const requestSimilar = axios.get(`https://api.themoviedb.org/3/movie/${resultMovie.id}/similar?api_key=${props.API_Key}`);
-        const requestDetails = axios.get(`https://api.themoviedb.org/3/movie/${resultMovie.id}?api_key=${props.API_Key}`);
+        const requestActors = axios.get(`https://api.themoviedb.org/3/movie/${resultMovie.id}/credits?api_key=${process.env.REACT_APP_API_KEY}`);
+        const requestSimilar = axios.get(`https://api.themoviedb.org/3/movie/${resultMovie.id}/similar?api_key=${process.env.REACT_APP_API_KEY}`);
+        const requestDetails = axios.get(`https://api.themoviedb.org/3/movie/${resultMovie.id}?api_key=${process.env.REACT_APP_API_KEY}`);
 
         axios.all([requestActors, requestSimilar, requestDetails])
             .then(axios.spread((...res) => {
                 const baseActors = res[0];
                 const baseSimilar = res[1];
                 const baseCategories = res[2];
-                console.log('BASE  CATEGORIES ', baseCategories)
 
                 let categories = baseCategories.data.genres;
                 let finalCategories = categories.map(category => category.name);
-                console.log('CATEGORIES', finalCategories)
 
                 let actors = baseActors.data.cast.slice(0, 6).map(actor => actor)
 
@@ -56,7 +53,6 @@ const AddMovie = (props) => {
                         release_date: similar.release_date
                     })
                 })
-                // setSelectedMovie({...resultMovie, actors: finalActors, similar: finalSimilar, categories: finalCategories});
                 setResultMovie({
                     title: resultMovie.title,
                     release_date: resultMovie.release_date,
@@ -68,7 +64,6 @@ const AddMovie = (props) => {
                     similar_movies: finalSimilar
                 })
 
-                console.log('MOVIE', resultMovie);
                 setFormData({
                     title: resultMovie.title,
                     release_date: resultMovie.release_date,
@@ -83,10 +78,6 @@ const AddMovie = (props) => {
             })).catch(err => alert(err));
     }, [])
 
-
-
-
-
     const onUpdateData = event => {
         const target = event.target,
             value = target.value,
@@ -96,11 +87,7 @@ const AddMovie = (props) => {
 
         data[name] = value;
         setFormData(data);
-
-        console.log('DATA', data)
     };
-
-    console.log('FORM DATA', formData)
 
     return (
         <form className="addForm">
@@ -129,7 +116,6 @@ const AddMovie = (props) => {
                     </label>
                 )) : <p>Pas d'acteur</p>
             }
-
             <label>Description : </label>
             <textarea required type="text" name="description" defaultValue={resultMovie.overview} onChange={onUpdateData}></textarea>
 
