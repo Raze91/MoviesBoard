@@ -1,7 +1,7 @@
 import React from 'react';
 import './Movie.css'
 import { Link } from 'react-router-dom';
-import imageNotFound from '../../../assets/image-not-found.png'
+import imageNotFound from '../../../assets/imageNotFound.png'
 
 const Movie = (props) => {
     let movie = props.movie;

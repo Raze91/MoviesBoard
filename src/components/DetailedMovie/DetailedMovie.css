@@ -34,6 +34,10 @@
     left: 0;
     z-index: -1;
 }
+
+.detailedNotFound {
+    width: 20%;
+}
 .detailedCtnr .btn-ctnr {
     display: flex;
     justify-content: center;

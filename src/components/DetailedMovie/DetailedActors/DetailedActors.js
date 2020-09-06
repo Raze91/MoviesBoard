@@ -1,6 +1,6 @@
 import React from 'react';
 import './DetailedActors.css'
-import imageNotFound from '../../../assets/image-not-found.png'
+import imageNotFound from '../../../assets/imageNotFound.png'
 
 const DetailedActors = (props) => {
 

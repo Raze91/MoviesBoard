@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchResult.css'
-import imageNotFound from '../../../../assets/image-not-found.png';
+import imageNotFound from '../../../../assets/imageNotFound.png';
 
 const SearchResult = (props) => {
     let resultMovie = props.movie;
