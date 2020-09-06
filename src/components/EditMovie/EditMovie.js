@@ -57,7 +57,7 @@ const EditMovie = (props) => {
             <input required type='text' name="title" defaultValue={editedMovie.title} onChange={onUpdateData}></input>
 
             <label htmlFor="date" >Date de l'ajout : </label>
-            <input required type="date" name="date" defaultValue={editedMovie.release_date} onChange={onUpdateData}></input>
+            <input required type="date" name="release_date" defaultValue={editedMovie.release_date} onChange={onUpdateData}></input>
             {/* Si le film possède des catégories, alors elles seront affichées dans le formulaire. Sinon un message indiquera qu'il n'en possède pas. */}
             {editedMovie.categories ?
                 editedMovie.categories.map((category, index) => (
