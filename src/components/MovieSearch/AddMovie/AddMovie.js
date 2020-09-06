@@ -109,7 +109,6 @@ const AddMovie = (props) => {
                 setFormData(data);
                 break;
         }
-        console.log(formData)
     };
     return (
         <form className="addForm">
