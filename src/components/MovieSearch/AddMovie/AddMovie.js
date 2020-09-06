@@ -109,6 +109,7 @@ const AddMovie = (props) => {
                 setFormData(data);
                 break;
         }
+        console.log(formData)
     };
     return (
         <form className="addForm">
@@ -118,7 +119,7 @@ const AddMovie = (props) => {
             <input required type='text' name="title" defaultValue={resultMovie.title} onChange={onUpdateData}></input>
 
             <label htmlFor="date">Date de l'ajout : </label>
-            <input required type="date" name="date" defaultValue={resultMovie.release_date} onChange={onUpdateData}></input>
+            <input required type="date" name="release_date" defaultValue={resultMovie.release_date} onChange={onUpdateData}></input>
             {/* Si le film possède des catégories, alors elles seront affichées dans le formulaire. Sinon un message indiquera qu'il n'en possède pas. */}
             {resultMovie.categories ?
                 resultMovie.categories.map((category, index) => (
