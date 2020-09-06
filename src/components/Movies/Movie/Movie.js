@@ -9,6 +9,7 @@ const Movie = (props) => {
     return (
         <div className='movieCard'>
             <Link to={`/movie/${movie.id}`}>
+                {/* Une image not found s'affiche si le film n'a pas de poster. */}
                 {movie.poster !== `http://image.tmdb.org/t/p/w185${null}` ? <img className='img-responsive' src={movie.poster} alt={movie.title} /> : <img src={imageNotFound} className="img-responsive notFound" alt="not found"></img>}
             </Link>
             <div className='text-ctnr'>

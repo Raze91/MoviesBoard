@@ -8,6 +8,7 @@ const Movies = (props) => {
 
     return (
         <section className="movies-ctnr">
+            {/* Si la bibliothèque de l'utilisateur contient au moins un film, elle s'affiche correctement. Sinon un message indique qu'elle est vide. */}
             {movieList.length > 0 ?
                 <>
                     <h2>Bibliothèque de films</h2>

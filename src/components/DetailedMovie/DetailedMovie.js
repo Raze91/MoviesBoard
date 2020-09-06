@@ -14,14 +14,13 @@ const DetailedMovie = (props) => {
         <article className="detailed">
             {detailedMovie.length > 0 ?
                 <section className="detailedCtnr">
+                    {/* Affiche l'image d'arrière plan seulement si le film en possède une. */}
                     {detailedMovie[0].backdrop !== 'http://image.tmdb.org/t/p/originalnull' && <img className="backdrop" src={detailedMovie[0].backdrop} alt={`Affiche secondaire de ${detailedMovie[0].title}`} />}
-
-
-                    {detailedMovie[0].poster !== `http://image.tmdb.org/t/p/w185${null}` ? <img className={detailedMovie[0].backdrop !== 'http://image.tmdb.org/t/p/originalnull' ? 'poster isBackdrop' : "poster"} src={detailedMovie[0].poster} alt={detailedMovie[0].title} />
+                    {/* Affiche une image not found si le film ne possède pas d'affiche. */}
+                    {detailedMovie[0].poster !== `http://image.tmdb.org/t/p/w185${null}` ?
+                        // Change les classes de l'affiche si le film possède une image d'arrière plan.
+                        <img className={detailedMovie[0].backdrop !== 'http://image.tmdb.org/t/p/originalnull' ? 'poster isBackdrop' : "poster"} src={detailedMovie[0].poster} alt={detailedMovie[0].title} />
                         : <img src={imageNotFound} className="detailedNotFound poster" alt="not found"></img>}
-
-
-
                     <h1 className="detailedTitle" >{detailedMovie[0].title}</h1>
                     <h2 className="detailedDate">{detailedMovie[0].release_date}</h2>
                     <h3 className="detailedCategories">{detailedMovie[0].categories.join(' / ')}</h3>

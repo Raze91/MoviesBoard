@@ -13,9 +13,10 @@ function App() {
 
   const [movies, setMovies] = useState([]);
 
+  // Récupère les données du film à supprimer lorsque l'utilisateur appuie sur le bouton supprimer
   const onDelete = (e, movie) => {
     e.preventDefault();
-
+    // Requête DELETE utilisant l'id du film à supprimer
     axios.delete(`http://localhost:3000/movies/${movie.id}`)
       .then(result => {
         window.location.replace('/')
@@ -24,12 +25,10 @@ function App() {
         console.log(error);
       })
   }
-
+  // Récupère les données du film lorsque l'utilisateur appuie sur le bouton modifier
   const onEdit = (e, movie, id) => {
     e.preventDefault();
-
-    console.log(movie);
-
+    // Requête PUT qui utilise l'id du film à modifier et qui le remplace par l'objet movie
     axios.put(`http://localhost:3000/movies/${id}`, movie)
       .then(result => {
         window.location.replace('/');
@@ -40,6 +39,7 @@ function App() {
   }
 
   useEffect(() => {
+    // Requête GET qui récupère les données de cette url
     axios.get('http://localhost:3000/movies')
       .then((result) => {
         setMovies(result.data);
