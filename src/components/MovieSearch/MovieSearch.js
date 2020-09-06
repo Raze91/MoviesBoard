@@ -61,7 +61,6 @@ const MovieSearch = (props) => {
                     <h1 className="searchTitle">Rechercher les films</h1>
                     <form className="searchForm" onSubmit={(e) => { onSearch(e) }}>
 
-
                         <label>Titre : </label>
                         <input type='text' onChange={(e) => { onTitleChange(e) }} ></input>
 
@@ -71,7 +70,8 @@ const MovieSearch = (props) => {
 
                         <input type='submit' className="search" value='Rechercher'></input>
                     </form>
-                    < SearchResultList searchResultList={searchResultList} onClickedButton={onClickedButton} getSelectedMovie={getSelectedMovie} />
+                    {searchResultList.length > 0 ? < SearchResultList searchResultList={searchResultList} onClickedButton={onClickedButton} getSelectedMovie={getSelectedMovie} /> : <h1>Aucun film ne correspond à cette recherche.</h1>}
+
                 </div> : < AddMovie selectedMovie={selectedMovie} onCreate={onCreate} />
             }
         </article>
